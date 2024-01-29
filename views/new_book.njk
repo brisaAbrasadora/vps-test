@@ -1,0 +1,60 @@
+{% extends "base.njk" %}
+{% block title %}Books | New Book{% endblock %}
+{% block content %}
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h2>Add book</h2>
+        </div>
+        <div class="card-body">
+            {% if errors.general %}
+                <p class="alert alert-danger">{{ errors.general }}</p>
+            {% endif %}
+            <form action="/books" method="post" enctype="multipart/form-data">
+                <div class="mb-3 row">
+                    <label for="title" class="col-sm-2 col-form label text-sm-end">Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="title" placeholder="Book's title..." value="{{ data.title }}"></div>
+                        <div class="row mb-0">
+                            <div class="col-10 offset-sm-2  mb-0">
+                                {% if errors.title %}
+                                    <p class="text-danger mb-0">{{ errors.title }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editorial" class="col-sm-2 col-form-label text-sm-end">Editorial</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="editorial" placeholder="Book's editorial" value="{{ data.editorial }}"></div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="price" class="col-sm-2 col-form-label text-sm-end">Price</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="price" placeholder="0" value="{{ data.price }}"/>
+                            </div>
+                            <div class="row mb-0">
+                            <div class="col-10 offset-sm-2  mb-0">
+                                {% if errors.price %}
+                                    <p class="text-danger mb-0">{{ errors.price }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="cover" class="col-sm-2 col-form-label text-sm-end">Cover</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" name="cover"></div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="offset-sm-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <div class="float-end">
+                                        <label>
+                                            <input type="checkbox" id="errorType"/> Show error in the form</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% endblock %}

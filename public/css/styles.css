@@ -1,0 +1,28 @@
+footer {
+    width: 100%;
+    padding: 20px;
+    color: white;
+}
+
+.headers {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 5px;
+}
+
+.row:not(.headers) {
+    padding: 5px 5px;
+}
+
+.container {
+    padding: 20px 0px;
+}
+
+.par {
+    background-color: lightgray;
+}
+
+img {
+    max-width: 50vw;
+}

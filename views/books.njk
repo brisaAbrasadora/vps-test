@@ -1,0 +1,46 @@
+{% extends "base.njk" %}
+{% block title %}Books | List{% endblock %}
+{% block content %}
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2>Book list</h2>
+        </div>
+        <div class="card-block">
+            {% if books %}
+                <div class="table-responsive">
+                    <div class="row headers g-0">
+                        <div class="col my-auto">Title</div>
+                        <div class="col my-auto">Check book</div>
+                        <div class="col my-auto">Delete book</div>
+                        <div class="col my-auto">Edit book</div>
+                    </div>
+                    {% for book in books %}
+                        {% if loop.index % 2 == 0 %}
+                            <div class="row g-0 par">
+                            {% else %}
+                                <div class="row g-0 impar">
+                                {% endif %}
+                                <div class="col my-auto">{{ book.title }}</div>
+                                <div class="col my-auto">
+                                    <a class="btn btn-sm btn-success" href="/books/{{ book._id }}">Check</a>
+                                </div>
+                                <div class="col my-auto">
+                                    <form action="/books/{{ book._id }}" method="post">
+                                        <input type="hidden" name="_method" value="delete">
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                Borrar
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="col my-auto">
+                                        <a class="btn btn-sm btn-warning" href="/books/edit/{{ book._id }}">Edit</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <h3 class="p-4">No books</h3>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}

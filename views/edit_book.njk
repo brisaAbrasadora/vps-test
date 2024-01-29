@@ -1,0 +1,56 @@
+{% extends "base.njk" %} 
+
+{% block title %}Books | Edit {% endblock %}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h2>Edit book</h2>
+    </div>
+    <div class="card-body">
+         {% if errors.general %}
+                <p class="alert alert-danger">{{ errors.general }}</p>
+            {% endif %}
+        <form action="/books/{{ book._id }}" method="post" enctype="multipart/form-data">
+            <div class="mb-3 row">
+                <label for="title" class="col-sm-2 col-form label text-sm-end">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" placeholder="Book's title..."
+                    value="{{ book.title }}">
+                </div>
+                <div class="row mb-0">
+                            <div class="col-10 offset-sm-2  mb-0">
+                                {% if errors.title %}
+                                    <p class="text-danger mb-0">{{ errors.title }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="editorial" class="col-sm-2 col-form-label text-sm-end">Editorial</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="editorial" placeholder="Book's editorial..."
+                    value="{{ book.editorial }}"/>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="price" class="col-sm-2 col-form-label text-sm-end">Price</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="price" placeholder="0" 
+                    value="{{ book.price }}"/>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                    <label for="cover" class="col-sm-2 col-form-label text-sm-end">Cover</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" name="cover">
+                    </div>
+                </div>
+            <div class="mb-3 row">
+                <div class="offset-sm-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

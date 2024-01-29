@@ -1,0 +1,19 @@
+{% extends "base.njk" %}
+
+{% block title %}Book info{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <h2>Book info</h2>
+    </div>
+    <div class="card-block p-3 text-center">
+        <div><img src="/public/uploads/{{ book.cover }}" alt="{{ book.cover }}"></div>
+        <div><strong>Title:</strong> {{ book.title }}</div>
+        <div><strong>Editorial:</strong> {{ book.editorial }}</div>
+        <div><strong>Price:</strong> {{ book.price }}</div>
+        <div><strong>Comments:</strong> {{ book.comments }}</div>
+    </div>
+    <a href="/books" class="btn btn-sm btn-success">Go back</a>
+</div>
+{% endblock %}

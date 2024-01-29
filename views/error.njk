@@ -1,0 +1,15 @@
+{% extends "base.njk" %}
+
+{% block titulo %}Error{% endblock %}
+
+{% block content %}
+<h1>Error</h1>
+
+<div class="alert alert-danger">
+    {% if error %}
+        {{ error | safe }}
+    {% else %}
+        App error
+    {% endif %}
+</div>
+{% endblock %}
