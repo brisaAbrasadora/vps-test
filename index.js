@@ -7,7 +7,7 @@ const multer = require("multer");
 const Author = require("./routes/author");
 const Book = require("./routes/book");
 
-mongoose.connect("mongodb://127.0.0.1:27017/books");
+mongoose.connect("mongodb://localhost:27017/books");
 
 const app = express();
 nunjucks.configure("views", {
