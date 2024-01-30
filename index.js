@@ -17,7 +17,7 @@ nunjucks.configure("views", {
 
 app.set("view engine", "njk");
 
-console.log("Ruta de plantillas:", nunjucks.configure("views").getTemplate("books.njk").path);
+// console.log("Ruta de plantillas:", nunjucks.configure("views").getTemplate("books.njk").path);
 
 
 app.use(express.json());
@@ -39,6 +39,6 @@ app.get("/", (req, res) => {
 })
 
 
-// app.listen(8080);
+app.listen(8080);
 
-module.exports.app = app;
+// module.exports.app = app;
